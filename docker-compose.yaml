@@ -1,0 +1,37 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: wakandata
+      POSTGRES_PASSWORD: wakandata
+      POSTGRES_DB: mlopsvn-marathon
+    ports:
+      - 5432:5432
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - POSTGRES_HOST=postgres
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+  
+  grafana:
+    image: grafana/grafana:8.2.0
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    environment:
+      - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    user: "1000"
