@@ -7,11 +7,11 @@ class NewProblem(Base):
 
     __tablename__ = "Data"
     id = Column(Integer, primary_key=True, index=True)
-    # request_id = 
+    # request_id =
 
 
 class Prob1Table(ProblemBase):
-    __tablename__ = '1.1.FraudDetection'
+    __tablename__ = "1.1.FraudDetection"
 
     job = Column(String)
     category = Column(String)
@@ -33,7 +33,7 @@ class Prob1Table(ProblemBase):
 
 
 class Prob2Table(ProblemBase):
-    __tablename__ = '1.2.SalaryPrediction'
+    __tablename__ = "1.2.SalaryPrediction"
 
     work_year = Column(Integer)
     experience_level = Column(String)

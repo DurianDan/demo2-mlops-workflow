@@ -1,10 +1,13 @@
 from pydantic import BaseModel
 from typing import Any, List, Union
 
+
 class BaseSchema(BaseModel):
     id: int
+
     def __getitem__(self, item):
         return getattr(self, item)
+
 
 class RequestSchema(BaseSchema):
     """Data Scheme of the Request Body, that will be received by /predict/ route
@@ -13,6 +16,7 @@ class RequestSchema(BaseSchema):
     - `rows` contains names of features
     - `columns` 2D array data
     """
+
     rows: List[str]
     columns: List[List[Union[None, float, int, str, bool]]]
 
@@ -24,5 +28,5 @@ class ResponseSchema(BaseSchema):
     - `rows` contains names of features
     - `columns` 2D array data
     """
-    predictions: List[Union[None, float, int, str, bool]]
 
+    predictions: List[Union[None, float, int, str, bool]]

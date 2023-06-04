@@ -2,6 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import OperationalError
 import time
+from .utilities.config_utils import db_uri
+
 
 def create_session(SQLALCHEMY_DATABASE_URL: str):
     while True:
@@ -17,5 +19,6 @@ def create_session(SQLALCHEMY_DATABASE_URL: str):
             print("Database connection failed. Retrying in 5 seconds...")
             time.sleep(5)
 
-SQLALCHEMY_DATABSE_URL = "postgresql://wakandata:wakandata@postgres/mlopsvn-marathon"
-engine, session_local = create_session(SQLALCHEMY_DATABSE_URL)
+
+SQLALCHEMY_DATABASE_URL = db_uri()
+engine, session_local = create_session(SQLALCHEMY_DATABASE_URL)

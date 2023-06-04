@@ -4,6 +4,9 @@ dumb/
 dumb.py
 data/
 credentials.yaml
+.fastapi.env
+.postgres.env
+.grafana.env
 
 # .gitignore template from https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
