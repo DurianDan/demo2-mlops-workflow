@@ -7,6 +7,7 @@ credentials.yaml
 .fastapi.env
 .postgres.env
 .grafana.env
+*.pem
 
 # .gitignore template from https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
