@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from .base import ProblemBase
 from .phase1 import Prob1Table, Prob2Table
-from .base import ProblemBase
 
 
 class AbstractModelCreator(ABC):

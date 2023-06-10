@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Any, List, Union
+from typing import List, Union
 
 
 class BaseSchema(BaseModel):
@@ -10,7 +10,8 @@ class BaseSchema(BaseModel):
 
 
 class RequestSchema(BaseSchema):
-    """Data Scheme of the Request Body, that will be received by /predict/ route
+    """Data Scheme of the Request Body,
+    that will be received by /predict/ route
 
     - `id` of the request
     - `rows` contains names of features

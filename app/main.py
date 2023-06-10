@@ -1,4 +1,3 @@
-from typing import Union
 from fastapi import FastAPI
 
 from .db import engine, session_local
@@ -6,7 +5,7 @@ from .problem.api_models.factory import ModelCreator
 from .problem.api_models import Base
 from .problem.schema import RequestSchema
 
-Base.metadata.create_all(bind=engine)  # create tables for each model if not existing
+Base.metadata.create_all(bind=engine)
 app = FastAPI()
 model_creator = ModelCreator()
 
@@ -24,7 +23,8 @@ async def recieve(phase_id: int, prob_id: int, request_data: RequestSchema):
     for info in request_data["columns"]:
         # add each record to the db
         record = {
-            col_name: info[idx] for idx, col_name in enumerate(request_data["rows"])
+            col_name: info[idx]
+            for idx, col_name in enumerate(request_data["rows"])
         }
         session.add(api_model(**record, request_id=request_data["id"]))
         session.commit()
