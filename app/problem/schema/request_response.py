@@ -30,3 +30,4 @@ class ResponseSchema(BaseSchema):
     """
 
     predictions: List[Union[None, float, int, str, bool]]
+    drift: int
