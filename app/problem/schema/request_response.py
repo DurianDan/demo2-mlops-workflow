@@ -3,7 +3,7 @@ from typing import List, Union, Any
 
 
 class BaseSchema(BaseModel):
-    id: int
+    id: str
 
     def __getitem__(self, item):
         return getattr(self, item)

@@ -51,8 +51,8 @@ async def recieve(phase_id: int, prob_id: int, request_data: RequestSchema) -> U
 
         result = {
             "predictions": prediction.tolist(),
-            "drift": int(drift),
-            "id": int(request_data.id)
+            "drift": 0,
+            "id": str(request_data.id)
         }
 
     except Exception as err : 
