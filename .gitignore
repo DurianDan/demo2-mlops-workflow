@@ -2,7 +2,7 @@
 .vscode/
 dumb/
 dumb.py
-data/
+deployment/data/
 credentials.yaml
 .fastapi.env
 .postgres.env

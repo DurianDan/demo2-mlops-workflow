@@ -1,0 +1,1 @@
+from .test_predict import test_model_from_judges

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Union
+from typing import List, Union, Any
 
 
 class BaseSchema(BaseModel):
@@ -18,9 +18,8 @@ class RequestSchema(BaseSchema):
     - `columns` 2D array data
     """
 
-    rows: List[str]
-    columns: List[List[Union[None, float, int, str, bool]]]
-
+    rows: Any
+    columns: Any
 
 class ResponseSchema(BaseSchema):
     """Data Scheme of the Response Body, that will be sent from /predict/ route
