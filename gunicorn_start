@@ -4,7 +4,7 @@ NAME=fastapi-app
 DIR=/home/fastapi-user/fastapi-nginx-gunicorn
 USER=fastapi-user
 GROUP=fastapi-user
-WORKERS=3
+WORKERS=9 # =(recommended) CPU cores + 1 = numberof workers 
 WORKER_CLASS=uvicorn.workers.UvicornWorker
 VENV=$DIR/.venv/bin/activate
 BIND=unix:$DIR/run/gunicorn.sock

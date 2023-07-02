@@ -3,11 +3,11 @@ upstream app_server {
 }
 
 server {
-    listen 80;
+    listen 5040;
 
     # add here the ip address of your server
     # or a domain pointing to that ip (like example.com or www.example.com)
-    server_name XXXX;
+    server_name 13.229.56.20;
 
     keepalive_timeout 5;
     client_max_body_size 4G;
@@ -19,10 +19,10 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $http_host;
         proxy_redirect off;
-                        
+
         if (!-f $request_filename) {
             proxy_pass http://app_server;
             break;
         }
-	}
+        }
 }
