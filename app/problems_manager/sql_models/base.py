@@ -5,7 +5,7 @@ from sqlalchemy import Column, Integer
 Base = declarative_base()
 
 
-class ProblemBase(Base):
+class BaseSQLModel(Base):
     __abstract__ = True
     id = Column(Integer, primary_key=True, index=True)
     request_id = Column(Integer)

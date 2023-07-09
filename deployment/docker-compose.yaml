@@ -1,0 +1,14 @@
+version: "3"
+services:
+  fastapi:
+    container_name: fastapi
+    build:
+      context: ./dockerfiles
+      dockerfile: fastapi.Dockerfile
+  
+  mlflow:
+    container_name: mlflow
+    build:
+      context: ./dockerfiles
+      dockerfile: mlflow.Dockerfile
+    
