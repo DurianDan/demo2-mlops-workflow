@@ -1,5 +1,5 @@
 from typing import Tuple, Optional
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, model_validator
 from ..schemas import RequestSchema 
 from .predictor import PredictorFactory
 from .predictor.base import BasePredictor
@@ -12,7 +12,7 @@ class ProblemsManager(BaseModel):
     predictor_factory: PredictorFactory
     sql_model_factory: SQLModelsFactory
 
-    @root_validator
+    @model_validator(mode="before")
     def set_factories(cls, values):
         '''
         Auto create the `factories` when `request_body` is parsed
