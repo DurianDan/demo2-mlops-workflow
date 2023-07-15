@@ -1,2 +1,2 @@
-from .factory import SQLModelsFactory 
+from .factory import SQLModelsFactory
 from . import base

@@ -1,8 +1,9 @@
 # custom
 .vscode/
 dumb/
-dumb.py
 data/
+TODO/
+dumb.py
 credentials.yaml
 fastapi.env
 postgres.env

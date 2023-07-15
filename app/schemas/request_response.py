@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Any, Literal
+from pandas import DataFrame
+from numpy import ndarray, array
 
 
 class BaseSchema(BaseModel):
@@ -12,14 +14,23 @@ class BaseSchema(BaseModel):
 class RequestSchema(BaseSchema):
     """Data Scheme of the Request Body,
     that will be received by `/predict` route
-
-    - `id` of the request
-    - `rows` contains names of features
-    - `columns` 2D array data
+    - attributes:
+        - `id` of the request
+        - `rows` contains names of features
+        - `columns` 2D array data
+    - methods:
+        - `get_frame()` returns a `pandas DataFrame`
+        - `get_array()` returns a 2D `numpy array`
     """
 
     columns: List[str]
-    rows: List[List[None| float| int| str| bool]]
+    rows: List[List[None | float | int | str | bool]]
+
+    def get_frame(self) -> DataFrame:
+        return DataFrame(data=self.rows, columns=self.columns)
+
+    def get_array(self) -> ndarray:
+        return array(self.rows)
 
 
 class ResponseSchema(BaseSchema):
@@ -31,7 +42,7 @@ class ResponseSchema(BaseSchema):
     """
 
     prediction: List[List[Any] | int | float]
-    drift: Literal[1,0]
+    drift: Literal[1, 0]
 
 
 class MockResponseSchema(BaseSchema):
