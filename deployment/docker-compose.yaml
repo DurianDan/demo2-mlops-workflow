@@ -2,13 +2,30 @@ version: "3"
 services:
   fastapi:
     container_name: fastapi
+    networks:
+      - mlops
     build:
-      context: ./dockerfiles
-      dockerfile: fastapi.Dockerfile
+      context: ..
+      dockerfile: ./deployment/dockerfiles/fastapi.Dockerfile
+    volumes:
+      - ..:/code
   
   mlflow:
     container_name: mlflow
     build:
-      context: ./dockerfiles
-      dockerfile: mlflow.Dockerfile
-    
+      context: ..
+      dockerfile: ./deployment/dockerfiles/mlflow.Dockerfile
+    networks:
+      - mlops
+    command:
+      - bash
+      - -c
+      - "mlflow server --backend-store-uri sqlite:////mlflow/mlflow.db --serve-artifacts --host 0.0.0.0 --port 5000"
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data/mlflow:/mlflow
+
+networks:
+  mlops:
+    driver: bridge
