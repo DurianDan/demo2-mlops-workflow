@@ -7,6 +7,8 @@ services:
     build:
       context: ..
       dockerfile: ./deployment/dockerfiles/fastapi.Dockerfile
+    ports:
+      - 8000:8000
     volumes:
       - ..:/code
   
